@@ -231,9 +231,8 @@ class MangaDetailsPresenter(
                 controller.updateHeader()
             }
             if (fetchMangaNeeded || fetchChaptersNeeded) {
-                fetchMangaAndChaptersFromSource(fetchMangaNeeded, fetchChaptersNeeded, manualFetch = false),
+                fetchMangaAndChaptersFromSource(fetchMangaNeeded, fetchChaptersNeeded, manualFetch = false)
             }
-            tasks.awaitAll()
             isLoading = false
             withUIContext {
                 controller.updateChapters()
@@ -508,10 +507,7 @@ class MangaDetailsPresenter(
 
         presenterScope.launch {
             isLoading = true
-            fetchMangaAndChaptersFromSource(
-                fetchDetails = true, fetchChapters = true,
-            )
-            tasks.awaitAll()
+            fetchMangaAndChaptersFromSource(fetchDetails = true, fetchChapters = true)
             isLoading = false
             withUIContext {
                 view?.updateChapters()
